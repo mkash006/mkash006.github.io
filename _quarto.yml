@@ -1,0 +1,69 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Mayank Kashyap"
+  description: "Evolutionary and computational biology — UC Riverside"
+  site-url: https://mkash006.github.io
+  repo-url: https://github.com/mkash006/mkash006.github.io
+  navbar:
+    # Pinned keeps the bar put at the top of the viewport and, as a side
+    # effect, keeps Quarto from loading headroom.js — nothing slides away.
+    # The bar tints from banner navy to white as you scroll
+    # (assets/navbar-scroll.js).
+    pinned: true
+    collapse-below: lg
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: Publications.qmd
+        text: Publications
+      - href: software.qmd
+        text: Software
+      - href: cv.qmd
+        text: CV
+    right:
+      - icon: github
+        href: https://github.com/mkash006
+        aria-label: GitHub
+      - icon: envelope
+        href: mailto:mkash006@ucr.edu
+        aria-label: Email
+      - icon: linkedin
+        href: https://www.linkedin.com/in/mayank-kashyap-158252206
+        aria-label: LinkedIn
+  page-footer:
+    background: primary
+    left: "© 2026 Mayank Kashyap"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - theme.scss
+    css: styles.css
+    # Page titles ride a full-bleed DNA banner; the darkening overlay and type
+    # are in theme.scss under "Title banner".
+    title-block-banner: assets/dna-banner.jpg
+    title-block-banner-color: white
+    include-after-body:
+      text: |
+        <script src="/assets/navbar-scroll.js"></script>
+    toc: false
+    code-copy: true
+    code-overflow: wrap
+    link-external-newwindow: true
+    grid:
+      body-width: 900px
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+execute:
+  freeze: auto

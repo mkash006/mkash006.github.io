@@ -1,0 +1,24 @@
+---
+title: "Mayank Kashyap"
+about:
+  template: trestles
+  image: assets/headshot.jpg
+  image-shape: round
+  image-width: 20.1em
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/mkash006
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/mayank-kashyap-158252206/
+    - icon: mortarboard-fill
+      text: Scholar
+      href: https://scholar.google.com/citations?user=ubPHtE0AAAAJ&hl=en
+    - icon: file-earmark-pdf
+      text: CV
+      href: assets/kashyap_cv.pdf
+---
+
+# About Me
+I am Population geneticist broadly interested in understanding genomic consquences of complex trait evoltion, and ultimate mechaisms facilitating complex trait evolution. Currently, I am a completing my PhD dissertation focused on investigating intragenomic conflict driven by the evolution of viviparous matrophic reproduction in the livebearing fish family Poeciliidae. I am also interested in computational, statistical and machine learning methods for analyzing large-scale genomic data and phenotypic data.
