@@ -15,10 +15,7 @@ about:
     - icon: mortarboard-fill
       text: Scholar
       href: https://scholar.google.com/citations?user=ubPHtE0AAAAJ&hl=en
-    - icon: file-earmark-pdf
-      text: CV
-      href: assets/kashyap_cv.pdf
 ---
 
 # About Me
-I am Population geneticist broadly interested in understanding genomic consquences of complex trait evoltion, and ultimate mechaisms facilitating complex trait evolution. Currently, I am a completing my PhD dissertation focused on investigating intragenomic conflict driven by the evolution of viviparous matrophic reproduction in the livebearing fish family Poeciliidae. I am also interested in computational, statistical and machine learning methods for analyzing large-scale genomic data and phenotypic data.
+I am a population geneticist interested in the genomic consequences of complex trait evolution and the ultimate mechanisms that drive it. My PhD dissertation investigates intragenomic conflict arising from the evolution of viviparous matrotrophy, a live-bearing reproductive strategy in which mothers provision offspring directly during gestation, in the livebearing fish family Poeciliidae. Alongside this work, I am interested in computational, statistical, and machine learning methods for analyzing large-scale genomic and phenotypic data.

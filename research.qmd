@@ -53,10 +53,48 @@ Some of the ongoing work in this project includes investigating multiple paterni
 
 **Parent-of-origin effects (genomic imprinting) in matrotrophic livebearing fishes**
 
-Genomic imprinting is a genetic phenomenon whereby the expression of an allele is dependent on its parent of origin. Matrotrophic livebearing fishes are predicted to be a hotspot for the evolution of genomic imprinting because they have potential interactions between fetus and mother during gestation combined with an expectaion of evolutioary conflcits over optimal maternal provisioning. Current projects include investigating latter using combination of phased genomic data, bulk transcriptomic data and offspring mass at birth data.
+Genomic imprinting is a genetic phenomenon whereby the expression of an allele is dependent on its parent of origin. Matrotrophic livebearing fishes are predicted to be a hotspot for the evolution of genomic imprinting because they have potential interactions between fetus and mother during gestation combined with an expectaion of evolutioary conflcits over optimal maternal provisioning. Current projects include investigating latter using phased genomic data, bulk transcriptomic data and offspring mass at birth data to get quantitative estimates of maternal provisioning.
 
 ## Post-copulatory sexual selection in Poeciliid fishes
 
 **Phylogenetic comparative analysis of sperm competition in Poeciliids**
 
+```{=html}
+<figure class="figure-inset is-right">
+  <a class="fig-zoom" href="assets/phylogeny.webp">
+    <img src="assets/phylogeny.webp"
+         alt="Circular time-calibrated phylogeny of poeciliid fishes and outgroups, with tips coded for superfetation and placentotrophy and photographs of representative species arranged around the outside." />
+  </a>
+  <figcaption>
+    Poeciliid phylogeny. Figure from Furness et al. (2019),
+    <em>Nature Communications</em> 10:3335. Licensed under
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </figcaption>
+</figure>
+```
+
 Poeciliid fishes have gotten a lot of attention from researchers studying Pre-copulatory sexual selection because of diversity of reproductive traits, sexual ornamentaion and mating behaviors. However, post-copulatory sexual selection has received less attention in this group despite sexual conflict hypotheses predicting interesting patterns of evolution in post-copulatory traits. My colleages and I have generated a dataset of sperm competitve traits for more than 30 species belonging to this family along with a phylogeny and are currently analyzing the data to test for patterns of evolution in post-copulatory traits.
+
+## Experimental evolution using lab selected lines of *Drosophila melanogaster* 
+
+Some of my earlier work has been focused on understanding fundamental questions in evolutionary biology using experimental evolution in *Drosophila melanogaster* using lab selected lines. I have used these lines to investigate:
+
+- Resource limitation and its effects on evolution of sexually dimorphic traits and life history traits in crowding adapted populations. 
+- Sex-specific dominance for surviving *Pseudomonas entomophila* infection in lab selected lines of *Drosophila melanogaster*.
+- Genetic basis of improved survival to *Pseudomonas entomophila* infection in lab selected lines of *Drosophila melanogaster* using population genetics, HMM selection scans and functional genomics approaches.
+
+```{=html}
+<figure class="figure-row">
+  <div class="figure-row-items">
+    <a class="fig-zoom" href="assets/dros1.png">
+      <img src="assets/dros1.png"
+           alt="Survivorship curves over 100 hours post infection across four experimental blocks, with eight selection-regime by sex combinations per panel." />
+    </a>
+    <a class="fig-zoom" href="assets/dros2.png">
+      <img src="assets/dros2.png"
+           alt="PC1 with 95% confidence intervals for two selection regimes, faceted by high, intermediate and low larval density and split by sex." />
+    </a>
+  </div>
+  <figcaption>Selected results figures</figcaption>
+</figure>
+```

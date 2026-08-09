@@ -281,38 +281,40 @@
   font-weight: 700;
 }
 
-/* Card for the tracking clip. Nothing uses it at the moment — the clip came
-   off the home page and goes back in later; drop the figure back on any page
-   and it picks these up:
-
-   <figure class="clip-card">
-     <img src="assets/website_small.gif" alt="..." loading="lazy">
-     <figcaption>Automated tracking and identity assignment</figcaption>
-   </figure> */
-.clip-card {
+/* Card for the tracking clip (software page). Same margin float as
+   .figure-inset, but the clip is video frames rather than line art, so it keeps
+   a card: rounded corners and a shadow to hold the dark footage off the page. */
+.clip-inset {
+  float: left;
+  width: 42%;
   max-width: 420px;
-  margin: 2rem 0 0;
+  margin: 0.35rem 1.6rem 1rem 0;
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 4px 16px rgba(44, 63, 81, 0.16);
 }
 
-.clip-card img {
+.clip-inset img {
   display: block;
   width: 100%;
   height: auto;
+  margin: 0;
 }
 
-.clip-card figcaption {
-  padding: 0.45rem 0.7rem;
+.clip-inset figcaption {
+  padding: 0.5rem 0.7rem 0.6rem;
   font-size: 0.72rem;
   line-height: 1.4;
-  color: #2c3f51;
+  color: #55636f;
 }
 
-.clip-card figcaption em {
-  font-style: italic;
+@media (max-width: 700px) {
+  .clip-inset {
+    float: none;
+    width: 100%;
+    margin: 1.25rem auto 1.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -331,16 +333,21 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Inset figure (research page). No card, no border: the PNG's white matte has
-   been cleared to transparent (tools/figure_bg_transparent.py), so the page
-   colour runs behind the chromosomes and their labels and the whole thing sits
-   in the text rather than on top of it.
+   Inset figures (research page). No card, no border: the white matte has been
+   cleared out of each image (tools/figure_bg_transparent.py), so the page
+   colour runs behind the artwork and its labels and the figure sits in the text
+   rather than on top of it. `.is-right` flips it to the other margin.
    --------------------------------------------------------------------------- */
 .figure-inset {
   float: left;
   width: 42%;
   margin: 0.35rem 1.6rem 0.6rem 0;
   background: none;
+}
+
+.figure-inset.is-right {
+  float: right;
+  margin: 0.35rem 0 0.6rem 1.6rem;
 }
 
 .figure-inset figure,
@@ -355,13 +362,105 @@
   background: none;
 }
 
+/* Only the image link loses its underline; a link in the credit line keeps it. */
+.figure-inset .fig-zoom {
+  display: block;
+  text-decoration: none;
+}
+
+/* Source and licence line, kept quiet so it reads as a credit rather than as
+   part of the prose. */
+.figure-inset figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: #55636f;
+}
+
+/* Floats do not shrink their parent, so a tall figure would otherwise hang into
+   whatever project comes next. */
+main.content section.level1,
+main.content section.level2 {
+  clear: both;
+}
+
 /* Below the column width there is no room to wrap text alongside it, so it
    goes full width and the prose picks up underneath. */
 @media (max-width: 700px) {
-  .figure-inset {
+  .figure-inset,
+  .figure-inset.is-right {
     float: none;
     width: 100%;
     max-width: 460px;
     margin: 1.25rem auto 1.5rem;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Two figures side by side under one caption, at the foot of a section. Same
+   cleared-matte treatment as .figure-inset, so the panels and their gridlines
+   sit on the page colour rather than on white cards.
+   --------------------------------------------------------------------------- */
+.figure-row {
+  margin: 2rem 0 0;
+}
+
+.figure-row-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+  align-items: center;  /* the two plots have different aspect ratios */
+}
+
+.figure-row img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  background: none;
+}
+
+.figure-row figcaption {
+  margin-top: 0.85rem;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: #55636f;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .figure-row-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   One wide figure across the column (software page). Cleared matte again, so
+   the rule graphs sit on the page colour; clicking opens the full resolution
+   file.
+   --------------------------------------------------------------------------- */
+.figure-wide {
+  margin: 1.75rem 0 0;
+}
+
+.figure-wide .fig-zoom {
+  display: block;
+  text-decoration: none;
+}
+
+/* Capped rather than run to the full column: at 900px the rule boxes would be
+   set larger than the prose next to them. */
+.figure-wide img {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  background: none;
+}
+
+.figure-wide figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: #55636f;
+  text-align: center;
 }

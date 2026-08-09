@@ -107,6 +107,14 @@ Two details carry the result:
    anti-aliased type edges smooth, and the tight window keeps the pale grey
    chromosome bands, which run to about 240, from being read as background.
 
+WebP input is written back as WebP: the colour is re-encoded lossily at quality
+92 while the alpha channel is stored losslessly, which is what keeps a
+print-resolution photographic figure like the phylogeny under a megabyte where
+PNG would run to several.
+
+JPEG input is written out as a PNG beside it, since JPEG has no alpha channel;
+the original is left in place for you to delete once the new file is wired up.
+
 It then crops to the alpha bounding box with a few pixels of padding, because
 slide exports carry a wide empty margin that CSS would otherwise have to
 absorb. The file is rewritten in place, so keep the original export elsewhere if
@@ -114,3 +122,32 @@ you may want to re-run with different thresholds.
 
 `.figure-inset` in `styles.css` does the layout: floated left at 42% of the
 column with no card or border, going full width below 700px.
+
+# Combined rule graph figure
+
+`tools/combine_rulegraphs.py` builds `assets/snakemake_rulegraphs.png`, the
+single figure on the software page that carries both Snakemake workflows.
+
+```sh
+python3 tools/combine_rulegraphs.py
+```
+
+It reuses `whiten_to_alpha` and `trim` from the background-removal script, so
+the panels sit on the page colour like every other figure, then does two things
+of its own:
+
+1. **Cuts the exported title off.** Each rule graph was exported with its own
+   title, set at whatever size that export used, and the page caption names the
+   workflows instead. There is no empty row to split title from graph, since
+   the descenders run straight into the first rule box, so the split is made on
+   width: the title spans most of the export and no row of the graph covers
+   more than about a quarter of it. Rows wider than `TITLE_WIDTH` are title,
+   and the graph starts at the first row that is not.
+2. **Pastes the panels at native size, hung from the top.** Both exports came
+   off the same renderer at the same scale, so leaving them unscaled is what
+   keeps a rule box the same size in either graph; scaling them to a shared
+   height would instead inflate whichever workflow has fewer steps.
+
+Re-run it whenever either rule graph is re-exported. `.figure-wide` in
+`styles.css` does the layout, capped at 620px and centred, because across the
+full 900px column the rule boxes come out larger than the prose beside them.

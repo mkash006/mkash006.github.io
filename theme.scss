@@ -157,6 +157,14 @@ main.content section.level2 + section.level2 {
   margin-top: 3rem;
 }
 
+// The software page has no top-level sections to divide it, so its projects
+// are marked `{.project}` and carry the same hairline between them.
+main.content section.level2.project + section.level2.project {
+  margin-top: 3.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba($navy, 0.13);
+}
+
 a { text-decoration: underline; }
 
 hr { margin: 0rem 0; }
@@ -308,6 +316,43 @@ div.quarto-about-solana .about-entity .about-link:hover {
   @extend .icon-link;
   background-color: $navy;
   padding: 4px 5px;
+}
+
+// ---- Repository buttons (software page) ----------------------------------
+// One outline button per repository, sitting under the project it belongs to.
+.repo-links {
+  clear: both;  // a floated figure must not push the buttons off centre
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+
+.repo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.85rem;
+  border: 1.5px solid rgba($navy, 0.5);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $navy;
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+}
+
+.repo-btn:hover,
+.repo-btn:focus {
+  background-color: $navy;
+  border-color: $navy;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.repo-btn svg {
+  flex: none;
 }
 
 // ---- Code ----------------------------------------------------------------

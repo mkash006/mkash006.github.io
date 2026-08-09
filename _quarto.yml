@@ -22,9 +22,7 @@ website:
       - href: Publications.qmd
         text: Publications
       - href: software.qmd
-        text: Software
-      - href: cv.qmd
-        text: CV
+        text: Bioinformatics and Software
     right:
       - icon: github
         href: https://github.com/mkash006

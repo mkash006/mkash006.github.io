@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Drop the white matte out of a figure PNG and trim its margins.
+"""Drop the white matte out of a figure and trim its margins.
 
-Slide exports come out on opaque white, so on the site's pale blue paper they
-read as a pasted-in rectangle. Clearing the white to transparent lets the page
-colour sit behind the chromosomes and labels instead.
+Figures out of slide decks and journal PDFs come on opaque white, so on the
+site's pale blue paper they read as a pasted-in rectangle. Clearing the white to
+transparent lets the page colour sit behind the artwork instead. Takes PNG or
+WebP and rewrites the file in place.
 
     python3 tools/figure_bg_transparent.py assets/imprinting.png
 """
@@ -51,13 +52,29 @@ def trim(img: Image.Image) -> Image.Image:
                      min(w, right + PAD), min(h, bottom + PAD)))
 
 
+def save(img: Image.Image, path: Path) -> Path:
+    if path.suffix.lower() == ".webp":
+        # Photographic figures are far too heavy as lossless PNG at print
+        # resolution. WebP compresses the colour lossily but the alpha channel
+        # losslessly, so the cutout stays clean at a tenth of the size.
+        img.save(path, quality=92, method=6)
+        return path
+    if path.suffix.lower() in {".jpg", ".jpeg"}:
+        # JPEG cannot carry an alpha channel, so the cutout has to land in a
+        # PNG beside it and the original is left for you to delete.
+        path = path.with_suffix(".png")
+    img.save(path)
+    return path
+
+
 def main() -> None:
     if len(sys.argv) != 2:
         sys.exit(__doc__)
     path = Path(sys.argv[1])
     out = trim(whiten_to_alpha(Image.open(path)))
-    out.save(path)
-    print(f"{path}: {out.size[0]}x{out.size[1]}, white matte cleared")
+    written = save(out, path)
+    kb = written.stat().st_size // 1024
+    print(f"{written}: {out.size[0]}x{out.size[1]}, {kb} KB, white matte cleared")
 
 
 if __name__ == "__main__":
