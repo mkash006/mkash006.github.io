@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Bioinformatics pipelines and Software",
+    "section": "",
+    "text": "The projects below are the computational side of my research: computer vision models, cluster workflows, and analysis pipelines written to take raw imaging and sequencing data through to results that can be reproduced. Code for each is on GitHub."
+  },
+  {
+    "objectID": "software.html#automated-cell-tracking",
+    "href": "software.html#automated-cell-tracking",
+    "title": "Bioinformatics pipelines and Software",
+    "section": "Automated cell tracking",
+    "text": "Automated cell tracking\n\n  \n  Detection, identity assignment and per cell trajectories in phase\n  contrast video of motile sperm.\n\nManual annotation remains the bottleneck for phenotyping high-throughput imaging data in ecology and evolution. To automate that step, I built a computer vision framework around YOLOv8 covering object detection, instance segmentation and multi-object tracking, trained on organismal imaging data rather than on benchmark image sets. The repository carries pre-trained models with worked Jupyter notebooks: sperm motility, where each cell is tracked across frames and its path converted into CASA-style motility metrics, spermatophore area by instance segmentation of brightfield images, and stickleback swimming biomechanics. Training runs are scripted for GPU nodes under SLURM.\n\n  \n    \n    GitHub"
+  },
+  {
+    "objectID": "software.html#snakemake-pipelines",
+    "href": "software.html#snakemake-pipelines",
+    "title": "Bioinformatics pipelines and Software",
+    "section": "Snakemake pipelines",
+    "text": "Snakemake pipelines\nTo keep sequencing analyses restartable and reproducible on a cluster, I write them as Snakemake workflows, with sample discovery, per rule resources and SLURM submission all handled from one config file. Two are public. The first follows GATK best practices for GRAS-Di reads: BWA-MEM alignment with inline read groups, read group repair and indexing, per sample GVCFs from HaplotypeCaller, then joint genotyping through GenomicsDBImport and GenotypeGVCFs. The second processes ddRAD data by indexing the reference, aligning with BWA-MEM and calling genotypes at RAD loci with the Stacks ref_map.pl pipeline.\n\n  \n    \n  \n  Rule graphs for the two workflows: GATK joint variant calling\n  (left) and Stacks ddRAD reference mapping (right).\n\n\n\n  \n    \n    grasdi_snpcall\n  \n  \n    \n    Snakemake_ddrad"
+  },
+  {
+    "objectID": "software.html#population-ancestry-admixture-and-paternity-analysis",
+    "href": "software.html#population-ancestry-admixture-and-paternity-analysis",
+    "title": "Bioinformatics pipelines and Software",
+    "section": "Population ancestry, admixture and paternity analysis",
+    "text": "Population ancestry, admixture and paternity analysis\nTo assign paternity from high density SNP data, this pipeline takes a joint genotyped cohort of Poeciliopsis prolifica from raw variant calls to a validated pedigree. Panel curation walks 5.9 million raw sites down to 14,899 well spaced, common, biallelic SNPs, recorded mothers are confirmed and sires assigned by opposing homozygote exclusion, and paternity is then quantified across experimental crosses between two source populations. Every assignment is checked against an independent line of evidence, a genomic hybrid index and admixture estimate per individual, which is also what flagged a mislabelled founder. Written in bash, Python and R, with each stage documented in its own file.\n\n  \n    \n    GitHub"
+  },
+  {
+    "objectID": "software.html#genome-wide-association-and-parent-of-origin-effects",
+    "href": "software.html#genome-wide-association-and-parent-of-origin-effects",
+    "title": "Bioinformatics pipelines and Software",
+    "section": "Genome wide association and parent-of-origin effects",
+    "text": "Genome wide association and parent-of-origin effects\nTo test whether an allele acts differently depending on which parent transmitted it, parental origin has to be resolved allele by allele. This pipeline does that for a three generation sib mating design in Heterandria formosa. Genotypes are masked on depth and quality before any site level metric is computed, then split into a phasing panel and an association panel with their own frequency and call rate cuts. Half sib families are phased per linkage group with hsphase, and the phased matrices feed four analyses: a parent-of-origin scan, an additive GWAS run as a control, REML heritability against a genomic relationship matrix, and an inbreeding depression regression. Significance is calibrated by permutation throughout, sign flipping the parent-of-origin codes for the POE scan and shuffling phenotype within brood for the additive scan, so that relatedness and family structure are preserved under the null.\n\n  \n    \n    GitHub"
+  },
+  {
+    "objectID": "Publications.html",
+    "href": "Publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "My name is shown in bold. This list is generated from publications.bib; the same file is also on Google Scholar.\n\n\nGeeta Arun, M., Agarwala, A., Syed, Z. A., Jigisha, Kashyap, M., Venkatesan, S., Chechi, T. S., Gupta, V., & Prasad, N. G. (2021). Experimental evolution reveals sex-specific dominance for surviving bacterial infection in laboratory populations of Drosophila melanogaster. Evolution Letters, 5(6), 657–671. https://doi.org/10.1002/evl3.259\n\n\nKapila, R., Kashyap, M., Gulati, A., Narasimhan, A., Poddar, S., Mukhopadhaya, A., & Prasad, N. G. (2021). Evolution of sex-specific heat stress tolerance and larval Hsp70 expression in populations of Drosophila melanogaster adapted to larval crowding. Journal of Evolutionary Biology, 34(9), 1376–1385. https://doi.org/10.1111/jeb.13897\n\n\nKapila, R., Kashyap, M., Poddar, S., Gangwal, S., & Prasad, N. G. (2021). Evolution of pathogen-specific improved survivorship post-infection in populations of Drosophila melanogaster adapted to larval crowding. PLOS ONE, 16(4), e0250055. https://doi.org/10.1371/journal.pone.0250055\n\n\nKashyap, M. (2021). Evolution of condition-dependent sexual dimorphism in crowding-adapted populations of Drosophila melanogaster [Master's thesis]. Indian Institute of Science Education and Research Mohali."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "My research interests broadly lie in understanding the genetic basis of complex evolutionary processes like speciation, sexual conflict, and the evolution of complex traits. My current research asks questions about the latter in context of intragenomic conflict associated with the evolution of vivparous matrotrophy in the livebearing fish family Poeciliidae. I am also interested in developing and applying computational, statistical, and machine learning methods for analyzing large-scale genomic and phenotypic data."
+  },
+  {
+    "objectID": "research.html#intragenomic-conflict-associated-with-evolution-of-viviparous-matrotrophy",
+    "href": "research.html#intragenomic-conflict-associated-with-evolution-of-viviparous-matrotrophy",
+    "title": "Research",
+    "section": "Intragenomic conflict associated with evolution of viviparous matrotrophy",
+    "text": "Intragenomic conflict associated with evolution of viviparous matrotrophy\nEvolution of increased multiple paternity associated with viviparous matrotrophy\nEvolution of viviparous matrotrophy is predicted to shift the landscape of sexual conflict acting on a species and subsequently increase levels of multiple paternity. Using controlled breeding assays and high-throughput sequencing based pedigree analysis in two closely related poeciliid species Heterandria formosa and Poecilia reticulata, I have empirically demonstrated elevated multiple paternity as a consequence of variation in mode of maternal provisioning.\n\n  \n    \n      \n      Heterandria formosa\n        14 dams, 15 sires, 572 offspring\n    \n    \n      \n      Poecilia reticulata\n        9 dams, 17 sires, 246 offspring\n    \n  \n  \n    Dam\n    Sire\n    Offspring\n  \n  \n    Reconstructed pedigrees from the two breeding designs, with dams and sires\n    sized by brood. Hover or tap an individual to light up its family.\n  \n\n\n\n\nSome of the ongoing work in this project includes investigating multiple paternity in wild populations at a macroevolutionary scale. We have generated ddrad sequencing data for 6 species of poeciliids that vary in reproductive mode and are currently analyzing the data to estimate levels of multiple paternity.\n\n\n\n\nParent-of-origin effects (genomic imprinting) in matrotrophic livebearing fishes\nGenomic imprinting is a genetic phenomenon whereby the expression of an allele is dependent on its parent of origin. Matrotrophic livebearing fishes are predicted to be a hotspot for the evolution of genomic imprinting because they have potential interactions between fetus and mother during gestation combined with an expectaion of evolutioary conflcits over optimal maternal provisioning. Current projects include investigating latter using phased genomic data, bulk transcriptomic data and offspring mass at birth data to get quantitative estimates of maternal provisioning."
+  },
+  {
+    "objectID": "research.html#post-copulatory-sexual-selection-in-poeciliid-fishes",
+    "href": "research.html#post-copulatory-sexual-selection-in-poeciliid-fishes",
+    "title": "Research",
+    "section": "Post-copulatory sexual selection in Poeciliid fishes",
+    "text": "Post-copulatory sexual selection in Poeciliid fishes\nPhylogenetic comparative analysis of sperm competition in Poeciliids\n\n  \n    \n  \n  \n    Poeciliid phylogeny. Figure from Furness et al. (2019),\n    Nature Communications 10:3335. Licensed under\n    CC BY 4.0.\n  \n\nPoeciliid fishes have gotten a lot of attention from researchers studying Pre-copulatory sexual selection because of diversity of reproductive traits, sexual ornamentaion and mating behaviors. However, post-copulatory sexual selection has received less attention in this group despite sexual conflict hypotheses predicting interesting patterns of evolution in post-copulatory traits. My colleages and I have generated a dataset of sperm competitve traits for more than 30 species belonging to this family along with a phylogeny and are currently analyzing the data to test for patterns of evolution in post-copulatory traits."
+  },
+  {
+    "objectID": "research.html#experimental-evolution-using-lab-selected-lines-of-drosophila-melanogaster",
+    "href": "research.html#experimental-evolution-using-lab-selected-lines-of-drosophila-melanogaster",
+    "title": "Research",
+    "section": "Experimental evolution using lab selected lines of Drosophila melanogaster",
+    "text": "Experimental evolution using lab selected lines of Drosophila melanogaster\nSome of my earlier work has been focused on understanding fundamental questions in evolutionary biology using experimental evolution in Drosophila melanogaster using lab selected lines. I have used these lines to investigate:\n\nResource limitation and its effects on evolution of sexually dimorphic traits and life history traits in crowding adapted populations.\nSex-specific dominance for surviving Pseudomonas entomophila infection in lab selected lines of Drosophila melanogaster.\nGenetic basis of improved survival to Pseudomonas entomophila infection in lab selected lines of Drosophila melanogaster using population genetics, HMM selection scans and functional genomics approaches.\n\n\n  \n    \n      \n    \n    \n      \n    \n  \n  Selected results figures"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mayank Kashyap",
+    "section": "",
+    "text": "About Me\nI am a population geneticist interested in the genomic consequences of complex trait evolution and the ultimate mechanisms that drive it. My PhD dissertation investigates intragenomic conflict arising from the evolution of viviparous matrotrophy, a live-bearing reproductive strategy in which mothers provision offspring directly during gestation, in the livebearing fish family Poeciliidae. Alongside this work, I am interested in computational, statistical, and machine learning methods for analyzing large-scale genomic and phenotypic data."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
